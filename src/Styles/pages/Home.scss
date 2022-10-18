@@ -1,0 +1,10 @@
+.screen-home {
+  position: relative;
+
+  img {
+    position: absolute;
+    height: 100vh;
+    width: 120vw;
+    object-fit: cover;
+  }
+}
