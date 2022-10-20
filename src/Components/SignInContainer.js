@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { TextField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 
 export default function SignInContainer() {
   const { toggleSignUp } = useContext(UserContext);
@@ -27,16 +27,10 @@ export default function SignInContainer() {
             variant="outlined"
             margin="dense"
           />
-          <TextField
-            className="repeat-password password-input input"
-            fullWidth
-            id="outlined-basic"
-            label="Repeat Password"
-            variant="outlined"
-            margin="dense"
-          />
         </form>
-        <h4 onClick={toggleSignUp}>Create a account</h4>
+        <Button variant="contained" onClick={toggleSignUp}>
+          Create a account
+        </Button>
       </div>
     </>
   );
