@@ -12,8 +12,14 @@ export function UserContextProvider(props) {
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
 
-  const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password);
+  const signUp = async (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        return userCredential;
+      })
+      .catch((error) => {
+        return error;
+      });
   };
 
   const [modalState, setModalState] = useState({

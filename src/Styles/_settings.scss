@@ -1,7 +1,7 @@
 $color-1: #fafafa;
 $color-2: #101010;
-$color-3: rgb(168, 168, 168);
-$color-4: pink;
+$grey: #c5c6c6;
+$green: #1b9476;
 $black: #1d2424;
 $red: red;
 
@@ -37,6 +37,15 @@ body {
   flex-direction: column;
 }
 
+.button {
+  height: 50px;
+  width: 100%;
+  background-color: rebeccapurple;
+}
+
+.input {
+  width: 100%;
+}
 h1 {
   font-size: 100px;
   padding: 0;

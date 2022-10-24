@@ -9,7 +9,6 @@ export default function Homes() {
 
   return (
     <div className="screen screen-home">
-      <img src={wallpaper} alt="wallpaper"></img>
       {modalState.signInModal ? <SignInContainer /> : <SignUpContainer />}
     </div>
   );

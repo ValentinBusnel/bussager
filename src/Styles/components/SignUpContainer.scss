@@ -1,4 +1,4 @@
-.sign-in-container {
+.sign-up-container {
   height: auto;
   width: 500px;
   border-radius: 8px;
@@ -25,14 +25,14 @@
     text-align: start;
     margin: 16px 0;
     padding: 0 0 16px 0;
-    border-bottom: 1px solid $color-2;
+    border-bottom: 1px solid $color-1;
     color: $color-2;
   }
   h4 {
     width: 100%;
     text-align: center;
     margin: 16px 0;
-    color: $color-2;
+    color: grey;
     cursor: pointer;
   }
 }

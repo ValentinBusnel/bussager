@@ -1,36 +1,37 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { TextField, Button } from "@mui/material";
+import { Button, Stack, Typography, useTheme } from "@mui/material";
+import TextFieldCustom from "./TextFieldCustom";
 
 export default function SignInContainer() {
   const { toggleSignUp } = useContext(UserContext);
+  const theme = useTheme();
 
   return (
     <>
       <div className="sign-in-container">
-        <h2>Sign in</h2>
-        <form>
-          <TextField
-            className="email-input input"
-            fullWidth
-            id="outlined-basic"
-            label="Email adress"
-            variant="outlined"
-            margin="dense"
-          />
-          <TextField
-            className="password password-input input"
-            spacing={2}
-            fullWidth
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            margin="dense"
-          />
-        </form>
-        <Button variant="contained" onClick={toggleSignUp}>
-          Create a account
-        </Button>
+        <h2>S'identifier</h2>
+        <Stack direction="column" spacing={1}>
+          <form>
+            <TextFieldCustom label="E-mail" />
+            <TextFieldCustom label="Password" />
+          </form>
+          <Button className="button" size="large" variant="contained">
+            S'identifier
+          </Button>
+          <div className="toggle-text">
+            <Typography variant="contained">
+              Première visite sur Bussager ?
+            </Typography>
+            <Typography
+              color={theme.palette.primary.green}
+              onClick={toggleSignUp}
+            >
+              {" "}
+              Inscrivez-vous.
+            </Typography>
+          </div>
+        </Stack>
       </div>
     </>
   );
