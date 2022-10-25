@@ -11,10 +11,10 @@ export default function SignInContainer() {
     <>
       <div className="sign-in-container">
         <h2>S'identifier</h2>
-        <Stack direction="column" spacing={1}>
+        <Stack direction="column" spacing={2}>
           <form>
             <TextFieldCustom label="E-mail" />
-            <TextFieldCustom label="Password" />
+            <TextFieldCustom type="password" label="Password" />
           </form>
           <Button className="button" size="large" variant="contained">
             S'identifier

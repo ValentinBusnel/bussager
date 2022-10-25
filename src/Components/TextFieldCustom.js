@@ -1,8 +1,10 @@
-import React from "react";
-import { TextField, useTheme } from "@mui/material";
+import React, { useState } from "react";
+import { TextField, useTheme, IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function TextFieldCustom(props) {
   const theme = useTheme();
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <>
@@ -37,6 +39,29 @@ export default function TextFieldCustom(props) {
         variant="outlined"
         fullWidth
         {...props}
+        type={
+          props.label.toLowerCase().includes("password")
+            ? showPassword
+              ? "text"
+              : "password"
+            : "text"
+        }
+        InputProps={{
+          ...(props.label.toLowerCase().includes("password") && {
+            endAdornment: (
+              <IconButton
+                sx={{
+                  "& .MuiSvgIcon-root": {
+                    color: theme.palette.primary.white,
+                  },
+                }}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            ),
+          }),
+        }}
       />
     </>
   );
