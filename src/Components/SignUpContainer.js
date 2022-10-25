@@ -9,11 +9,12 @@ import * as yup from "yup";
 
 const schema = yup
   .object({
-    email: yup.string().required().email(),
-    password: yup.string().min(4).max(20).required(),
+    email: yup.string().required().email("Email is required"),
+    password: yup.string().min(4).max(20).required("Password is required"),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Passwords must match"),
+      .oneOf([yup.ref("password"), null], "Passwords must match")
+      .required("Confirm your password"),
   })
   .required();
 
@@ -45,7 +46,7 @@ export default function SignUpContainer() {
       <Box className="sign-up-container">
         <h2>Sign Up</h2>
         <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-          <Stack direction="column" spacing={1}>
+          <Stack direction="column" spacing={2}>
             <Controller
               control={control}
               name="email"
