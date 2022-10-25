@@ -1,42 +1,42 @@
 import React from "react";
-import { TextField, useTheme, styled } from "@mui/material";
+import { TextField, useTheme } from "@mui/material";
 
-export default function TextFieldCustom(fieldProps) {
+export default function TextFieldCustom(props) {
   const theme = useTheme();
 
-  const CssTextField = styled(TextField)({
-    "& label.Mui-focused": {
-      color: theme.palette.primary.green,
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
-    },
-    "& .MuiFormLabel-root": {
-      color: theme.palette.primary.grey,
-      "&:hover fieldset": {
-        borderColor: theme.palette.primary.white,
-      },
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: theme.palette.primary.grey,
-      },
-      "&:hover fieldset": {
-        borderColor: theme.palette.primary.white,
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: theme.palette.primary.green,
-      },
-    },
-  });
   return (
     <>
-      <CssTextField
-        inputProps={{ color: theme.palette.primary.green }}
-        id="custom-css-outlined-input"
+      <TextField
+        sx={{
+          "& .MuiInputBase-input": {
+            borderRadius: "1px",
+            color: theme.palette.primary.white,
+          },
+          "& .MuiFormLabel-root.Mui-focused": {
+            color: theme.palette.primary.grey,
+          },
+          "& .MuiFormLabel-root": {
+            color: theme.palette.primary.grey,
+            "&:hover fieldset": {
+              borderColor: theme.palette.primary.white,
+            },
+          },
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: theme.palette.primary.grey,
+            },
+            "&:hover fieldset": {
+              borderColor: theme.palette.primary.white,
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: theme.palette.primary.green,
+            },
+          },
+        }}
         margin="dense"
+        variant="outlined"
         fullWidth
-        {...fieldProps}
+        {...props}
       />
     </>
   );
