@@ -6,6 +6,7 @@
 - Material UI
 - Firebase
 - React Hook Form
+- yup
 
 ## Pour lancer le projet
 
