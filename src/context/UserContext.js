@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -12,8 +12,26 @@ export function UserContextProvider(props) {
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setCurrentUser(currentUser);
+      setLoadingData(false);
+    });
+    return unsubscribe;
+  }, []);
+
   const signUp = async (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        return userCredential;
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
+
+  const signIn = async (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         return userCredential;
       })
@@ -43,9 +61,16 @@ export function UserContextProvider(props) {
 
   return (
     <UserContext.Provider
-      value={{ modalState, toggleSignUp, toggleSignIn, signUp }}
+      value={{
+        modalState,
+        toggleSignUp,
+        toggleSignIn,
+        signIn,
+        signUp,
+        currentUser,
+      }}
     >
-      {props.children}
+      {!loadingData && props.children}
     </UserContext.Provider>
   );
 }
