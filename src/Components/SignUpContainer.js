@@ -1,11 +1,13 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { Box, Button, Stack, useTheme, Typography } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import useValidation from "../hook/useValidation";
 import TextFieldCustom from "./TextFieldCustom";
+import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Loader from "./Loader";
 
 const schema = yup
   .object({
@@ -20,9 +22,18 @@ const schema = yup
 
 export default function SignUpContainer() {
   const { toggleSignIn, signUp } = useContext(UserContext);
-  const formRef = useRef();
   const validationSignup = useValidation();
   const theme = useTheme();
+  const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
+
+  const showLoaderAndNavigate = () => {
+    setLoader(true);
+    setTimeout(() => {
+      setLoader(false);
+      navigate("/private/private-home");
+    }, 1000);
+  };
 
   const {
     handleSubmit,
@@ -37,23 +48,22 @@ export default function SignUpContainer() {
     if (cred.code) {
       validationSignup(cred.code, data);
     } else {
-      formRef.current.reset();
+      showLoaderAndNavigate();
     }
   };
 
-  return (
+  return loader ? (
+    <Loader />
+  ) : (
     <>
       <Box className="sign-up-container">
         <h2>Sign Up</h2>
-        <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Stack direction="column" spacing={2}>
             <Controller
               control={control}
               name="email"
-              render={({
-                field: { onChange, onBlur, value, ref },
-                fieldState: { error },
-              }) => (
+              render={({ field: { onChange, onBlur, value, ref } }) => (
                 <TextFieldCustom
                   onBlur={onBlur} // notify when input is touched
                   onChange={onChange} // send value to hook form
@@ -65,7 +75,9 @@ export default function SignUpContainer() {
                     errors.email || validationSignup().email ? true : false
                   }
                   helperText={
-                    errors.email || validationSignup().email
+                    errors.email
+                      ? errors.email
+                      : false || validationSignup().email
                       ? validationSignup().email
                       : false
                   }
