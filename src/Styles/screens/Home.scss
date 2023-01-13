@@ -1,0 +1,11 @@
+.screen-home {
+  position: relative;
+  overflow: hidden;
+
+  .wallpaper {
+    position: absolute;
+    width: 200vw;
+
+    object-fit: contain;
+  }
+}

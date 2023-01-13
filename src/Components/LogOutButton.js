@@ -1,8 +1,9 @@
 import React from "react";
 import { signOut } from "firebase/auth";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase-config";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export default function LogOutButton() {
   const navigate = useNavigate();
@@ -20,16 +21,13 @@ export default function LogOutButton() {
 
   return (
     <div>
-      <Button
-        className="button"
-        size="large"
-        color="primary"
-        type="submit"
-        variant="contained"
+      <IconButton
         onClick={logOut}
+        color="white"
+        aria-label="add to shopping cart"
       >
-        Logout
-      </Button>
+        <LogoutIcon />
+      </IconButton>
     </div>
   );
 }

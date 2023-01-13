@@ -1,12 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext";
-import { Button, Box, Stack, Typography, useTheme } from "@mui/material";
-import TextFieldCustom from "./TextFieldCustom";
-import { Controller, useForm } from "react-hook-form";
+import { Button, Box, Stack, Typography } from "@mui/material";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Loader from "./Loader";
+import ControllerCustom from "./ControllerCustom";
 
 const schema = yup
   .object({
@@ -18,7 +18,6 @@ const schema = yup
 export default function SignInContainer() {
   const { toggleSignUp, signIn } = useContext(UserContext);
   const [validation, setValidation] = useState("");
-  const theme = useTheme();
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
 
@@ -52,46 +51,30 @@ export default function SignInContainer() {
   ) : (
     <>
       <Box className="sign-up-container">
-        <h2>Sign In</h2>
+        <h2>BUSSAGER</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack direction="column" spacing={2}>
-            <Controller
+          <Stack direction="column" spacing={1}>
+            <ControllerCustom
               control={control}
               name="email"
-              render={({ field: { onChange, onBlur, value, ref } }) => (
-                <TextFieldCustom
-                  onBlur={onBlur} // notify when input is touched
-                  onChange={onChange} // send value to hook form
-                  checked={value}
-                  inputRef={ref}
-                  label={"E-mail"}
-                  type={"email"}
-                  error={errors.email || validation ? true : false}
-                  helperText={
-                    errors.email
-                      ? errors.email.message
-                      : false || validation
-                      ? validation
-                      : false
-                  }
-                />
-              )}
+              label={"E-mail"}
+              type={"email"}
+              error={errors.email || validation ? true : false}
+              helperText={
+                errors.email
+                  ? errors.email.message
+                  : false || validation
+                  ? validation
+                  : false
+              }
             />
-            <Controller
+            <ControllerCustom
               control={control}
               name="password"
-              render={({ field: { onChange, onBlur, value, ref } }) => (
-                <TextFieldCustom
-                  onBlur={onBlur} // notify when input is touched
-                  onChange={onChange} // send value to hook form
-                  checked={value}
-                  inputRef={ref}
-                  label={"Password"}
-                  type={"password"}
-                  error={errors.password ? true : false}
-                  helperText={errors.password ? errors.password.message : false}
-                />
-              )}
+              label={"Password"}
+              type={"password"}
+              error={errors.password ? true : false}
+              helperText={errors.password ? errors.password.message : false}
             />
             <Button
               className="button"
@@ -99,8 +82,9 @@ export default function SignInContainer() {
               color="primary"
               type="submit"
               variant="contained"
+              style={{ borderRadius: "10px" }}
             >
-              Submit
+              Se connecter
             </Button>
           </Stack>
         </form>
@@ -108,10 +92,7 @@ export default function SignInContainer() {
           <Typography variant="contained">
             Premiere fois sur bussager ?
           </Typography>
-          <Typography
-            color={theme.palette.primary.green}
-            onClick={toggleSignUp}
-          >
+          <Typography color="primary" onClick={toggleSignUp}>
             {" "}
             Insicrivez vous
           </Typography>

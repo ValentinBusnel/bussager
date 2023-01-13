@@ -11,27 +11,28 @@ export default function TextFieldCustom(props) {
       <TextField
         sx={{
           "& .MuiInputBase-input": {
-            borderRadius: "1px",
-            color: theme.palette.primary.white,
+            color: theme.palette.secondary.white,
+            border: "10px",
           },
           "& .MuiFormLabel-root.Mui-focused": {
-            color: theme.palette.primary.grey,
+            color: theme.palette.primary.white,
           },
           "& .MuiFormLabel-root": {
-            color: theme.palette.primary.grey,
+            color: theme.palette.secondary.grey,
             "&:hover fieldset": {
-              borderColor: theme.palette.primary.white,
+              borderColor: theme.palette.secondary.white,
             },
           },
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
-              borderColor: theme.palette.primary.grey,
+              borderColor: theme.palette.secondary.grey,
+              borderRadius: "10px",
             },
             "&:hover fieldset": {
-              borderColor: theme.palette.primary.white,
+              borderColor: theme.palette.secondary.white,
             },
             "&.Mui-focused fieldset": {
-              borderColor: theme.palette.primary.green,
+              borderColor: theme.palette.primary.main,
             },
           },
         }}
@@ -52,7 +53,7 @@ export default function TextFieldCustom(props) {
               <IconButton
                 sx={{
                   "& .MuiSvgIcon-root": {
-                    color: theme.palette.primary.white,
+                    color: theme.palette.secondary.white,
                   },
                 }}
                 onClick={() => setShowPassword(!showPassword)}

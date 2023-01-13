@@ -1,17 +1,25 @@
 import { Route, Routes } from "react-router-dom";
-import Homes from "./pages/Homes";
+import Homes from "./screens/Homes";
 import { createTheme, ThemeProvider } from "@mui/material";
-import Private from "./pages/private/Private";
-import PrivateHome from "./pages/private/privateHome/PrivateHome";
+import Private from "./screens/private/Private";
+import PrivateHome from "./screens/private/privateHome/PrivateHome";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1B9476",
-      green: "#1B9476",
-      grey: "#7E7E7E",
+      main: "#6D22FF",
+    },
+    secondary: {
+      main: "#1b1c1e",
+      elevation: "#252525",
       white: "#FFFFFF",
-      black: "#101010",
+      grey: "#7E7E7E",
+    },
+    white: {
+      main: "#FFFFFF",
+    },
+    grey: {
+      main: "#7E7E7E",
     },
   },
 });

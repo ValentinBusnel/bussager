@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "./settings.scss";
-@import "./pages/Home.scss";
+@import "./screens/Home.scss";
 @import "./components/SignInContainer.scss";
 @import "./components/SignUpContainer.scss";
 @import "./components/Loader.scss";
+@import "./components/BussagerLogo.scss";

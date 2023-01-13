@@ -1,8 +1,20 @@
+@font-face {
+  font-family: "font-1";
+  src: url(../assets/fonts/RTRondelle-Regular.ttf);
+}
+@font-face {
+  font-family: "font-2";
+  src: url(../assets/fonts/AkzidenzGroteskPro-Regular.otf);
+}
+
+$font-1: "font-1", serif;
+$font-2: "font-2", serif;
+
 $white: #ffffff;
-$black: #101010;
-$grey: #c5c6c6;
-$green: #1b9476;
-$red: red;
+$black: #1c1c1c;
+$black2: #252525;
+$grey: #7e7e7e;
+$purple: #6d22ff;
 
 * {
   margin: 0;
@@ -15,17 +27,22 @@ $red: red;
 
   &::selection {
     color: $black;
-    background: black;
+    background: $white;
   }
 }
 
 body {
-  background-color: black;
-  color: white;
+  color: $white;
+  font-family: $font-1;
 }
 
 .screen {
-  background-color: black;
+  background: rgb(31, 19, 74);
+  background: linear-gradient(
+    90deg,
+    rgba(31, 19, 74, 1) 0%,
+    rgba(20, 30, 48, 1) 100%
+  );
   // border: black 1px solid;
   height: 100vh;
   width: 100vw;
@@ -59,4 +76,26 @@ h2 {
 p {
   font-size: 20px;
   font-weight: 300;
+}
+
+.privateHome {
+  display: flex;
+  background-color: $black;
+
+  .SectionUsersSearch {
+    height: 100vh;
+    width: 30%;
+    border-right: 2px #2d2d2d solid;
+  }
+
+  .SectionChat {
+    height: 100vh;
+    width: 50%;
+  }
+
+  .SectionInfo {
+    height: 100vh;
+    width: 20%;
+    border-left: 2px #2d2d2d solid;
+  }
 }
